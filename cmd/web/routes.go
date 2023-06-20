@@ -2,11 +2,12 @@ package main
 
 import "github.com/go-chi/chi/v5"
 
-func (a *Application) AddRouter() {
+func CreateRouter(h *Handler) *chi.Mux {
 	r := chi.NewRouter()
-	h := NewHandler()
 
 	r.Get("/healthcheck", h.handleHealthcheck)
+	r.Post("/log", h.handleLog)
+	r.NotFound(h.notFound)
 
-	a.Router = r
+	return r
 }

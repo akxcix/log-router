@@ -19,7 +19,7 @@ func RespondWithData(w http.ResponseWriter, r *http.Request, data interface{}) {
 	if err != nil {
 		msg := "Unable to marshall data json"
 		log.Error().Err(err).Msg(msg)
-		RespondWithInternalServerError(w, r, http.StatusInternalServerError, msg)
+		RespondWithError(w, r, http.StatusInternalServerError, msg)
 		return
 	}
 
@@ -29,7 +29,7 @@ func RespondWithData(w http.ResponseWriter, r *http.Request, data interface{}) {
 
 }
 
-func RespondWithInternalServerError(w http.ResponseWriter, r *http.Request, s int, e string) {
+func RespondWithError(w http.ResponseWriter, r *http.Request, s int, e string) {
 	res := &dto.Response{
 		Status: s,
 		Data:   e,

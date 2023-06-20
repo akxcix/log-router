@@ -30,7 +30,7 @@ func NewApplication() *Application {
 }
 
 func (app *Application) Serve() {
-	address := fmt.Sprintf("%s:%s", "127.0.0.1", "8080")
+	address := fmt.Sprintf("%s:%s", "0.0.0.0", "8080")
 
 	app.LogStore.StartProcessing()
 
